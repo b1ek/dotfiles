@@ -19,7 +19,8 @@ git -C "$d" checkout
 ROOTFS="$d/rootfs"
 
 echo "populating /opt/cont/caddy"
-cp $ROOTFS/opt/cont/caddy /opt/cont/caddy -r
+mkdir -p /opt/cont
+cp -r "$ROOTFS/opt/cont/caddy" /opt/cont/caddy
 
 docker network create services 2>/dev/null || true
 
