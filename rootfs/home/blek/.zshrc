@@ -74,3 +74,7 @@ alias sbd='sbox deepclaude'
 # end aliases
 
 add_path ~/.bin
+
+source ~/.zsh/theme.zsh
+
+fastfetch
