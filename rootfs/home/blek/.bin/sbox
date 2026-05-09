@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+if ! [ -d ~/.sandbox-home/.zshrc ]; then
+    cp ~/.zshrc ~/.sandbox-home/.zshrc
+fi
+
+bwrap \
+    --bind . /project \
+    --bind ~/.sandbox-home /home/blek \
+    --bind "$(tty)" "$(tty)" \
+    --ro-bind /etc/php /etc/php \
+    --ro-bind /usr/lib/php/modules /usr/lib/php/modules \
+    --ro-bind /etc/resolv.conf /etc/resolv.conf \
+    --ro-bind /etc/ssl /etc/ssl \
+    --ro-bind /etc/ca-certificates /etc/ca-certificates \
+    --ro-bind /usr /usr \
+    --ro-bind /bin /bin \
+    --ro-bind /opt/claude-code /opt/claude-code \
+    --symlink usr/lib64 /lib64 \
+    --proc /proc \
+    --dev /dev \
+    --chdir /project \
+    --dir /tmp \
+    --new-session \
+    $*

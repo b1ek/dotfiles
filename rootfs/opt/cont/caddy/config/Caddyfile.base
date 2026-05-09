@@ -1,0 +1,8 @@
+{
+	email {env.EMAIL}
+	acme_dns cloudflare {env.CF_TOKEN}
+}
+
+:80 {
+	respond "this is a hardcoded response on :80. you are probably lost though"
+}

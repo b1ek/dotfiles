@@ -1,0 +1,23 @@
+services:
+  caddy:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    env_file: .env
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./config:/etc/caddy
+      - data:/data
+    networks:
+      - services
+
+volumes:
+  data:
+
+networks:
+  services:
+    external: true
