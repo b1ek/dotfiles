@@ -33,7 +33,7 @@ git -C "$d" checkout
 
 ROOTFS="$d/rootfs"
 
-cp "$ROOTFS/home/blek" /home/blek -r
+cp "$ROOTFS/home/blek/." /home/blek/ -r
 chown blek:blek /home/blek -R
 chmod 600 /home/blek/.ssh -R
 chmod 700 /home/blek/.ssh
@@ -41,9 +41,19 @@ chmod 700 /home/blek/.ssh
 if command -v zsh &>/dev/null; then
     usermod -s "$(command -v zsh)" blek
 else
-    echo "zsh not found, skipping shell change"
+    echo zsh not found, skipping shell change
 fi
 
 mkdir -p /etc/ssh/sshd_config.d
-cp $ROOTFS/etc/ssh/sshd_config.d/* /etc/ssh/sshd_config.d
-systemctl reload sshd
+cp "$ROOTFS/etc/ssh/sshd_config.d/*" /etc/ssh/sshd_config.d
+
+if command -v systemctl &>/dev/null; then
+    if systemctl is-active --quiet sshd; then
+        systemctl reload sshd && echo "sshd reloaded" || echo "reload failed"
+    else
+        echo sshd not running or not found
+    fi
+else
+    echo not a systemd system, please reload sshd manually
+fi
+
