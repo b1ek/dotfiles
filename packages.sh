@@ -23,8 +23,8 @@ case "$DISTRO" in
         apk add --no-cache "${PKGS_COMMON[@]}" openssh
         ;;
     debian|ubuntu)
-        apt-get update -qq
-        apt-get install -y "${PKGS_COMMON[@]}" openssh-client
+        apt update
+        apt install -y "${PKGS_COMMON[@]}" openssh-client
         ;;
     *)
         echo "unknown distro: $DISTRO"
