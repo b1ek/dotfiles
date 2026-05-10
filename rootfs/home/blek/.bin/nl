@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# add newline to each file in DIR
+# usage: nl DIR
+
+if [[ -z "$1" ]]; then
+    echo "add newline to each file in DIR"
+    echo "usage: $0 DIR" >&2
+    exit 1
+fi
+
+dir="$1"
+
+find "$dir" -type f | while IFS= read -r file; do
+    if ! [[ -f "$file" ]]; then
+        continue
+    fi
+
+    if [[ -s "$file" ]] && [[ -w "$file" ]] && [[ "$(tail -c1 "$file" | wc -l)" -eq 0 ]]; then
+        echo >> "$file"
+    fi
+done
