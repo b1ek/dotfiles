@@ -21,6 +21,7 @@ ROOTFS="$d/rootfs"
 echo "populating /opt/cont/caddy"
 mkdir -p /opt/cont
 cp -r "$ROOTFS/opt/cont/caddy" /opt/cont/caddy
+cp /opt/cont/caddy/.env.example /opt/cont/caddy/.env
 
 docker network create services 2>/dev/null || true
 
