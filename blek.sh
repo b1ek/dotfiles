@@ -6,7 +6,7 @@ if [ "$EUID" != "0" ]; then
     exit 1
 fi
 
-REPO="${REPO:-https://github.com/b1ek/config.git}"
+REPO="${REPO:-https://github.com/b1ek/dotfiles.git}"
 d="$(mktemp -d)"
 trap 'rm -rf "$d"' EXIT
 

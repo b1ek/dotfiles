@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-REPO="${REPO:-https://github.com/b1ek/config.git}"
+REPO="${REPO:-https://github.com/b1ek/dotfiles.git}"
 d="$(mktemp -d)"
 trap "rm -rf $d" EXIT
 
