@@ -13,7 +13,7 @@ else
     DISTRO="unknown"
 fi
 
-PKGS_COMMON=(git wget curl neovim zsh ncdu)
+PKGS_COMMON=(git wget curl neovim zsh ncdu fastfetch)
 
 case "$DISTRO" in
     arch)
