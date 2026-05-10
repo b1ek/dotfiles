@@ -45,7 +45,7 @@ else
 fi
 
 mkdir -p /etc/ssh/sshd_config.d
-cp "$ROOTFS/etc/ssh/sshd_config.d/*" /etc/ssh/sshd_config.d
+cp $ROOTFS/etc/ssh/sshd_config.d/99_blek /etc/ssh/sshd_config.d
 
 if command -v systemctl &>/dev/null; then
     if systemctl is-active --quiet sshd; then
