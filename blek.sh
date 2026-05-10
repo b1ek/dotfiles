@@ -43,3 +43,7 @@ if command -v zsh &>/dev/null; then
 else
     echo "zsh not found, skipping shell change"
 fi
+
+mkdir -p /etc/ssh/sshd_config.d
+cp $ROOTFS/etc/ssh/sshd_config.d/* /etc/ssh/sshd_config.d
+systemctl reload sshd

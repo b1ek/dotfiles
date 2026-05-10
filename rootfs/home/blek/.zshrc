@@ -66,7 +66,6 @@ alias dcs='sudo docker compose ps'
 alias dcrn='sudo docker compose run'
 alias dcrnr='sudo docker compose run --rm'
 
-
 alias sbx='sbox zsh'
 alias sbc='sbox claude'
 alias sbd='sbox deepclaude'

@@ -1,0 +1,4 @@
+Match User blek
+    PasswordAuthentication no
+    AuthenticationMethods publickey
+    PubkeyAuthentication yes
